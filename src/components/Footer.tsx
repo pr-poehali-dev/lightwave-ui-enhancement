@@ -71,7 +71,7 @@ export function Footer() {
           </div>
 
           <div className="pt-8 border-t border-border flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>© 2025 Кофейня «Вафля». Все права защищены.</p>
+            <p>© 2026 Кофейня «Вафля». Все права защищены.</p>
             <div className="flex gap-6">
               <button
                 onClick={() => setPolicyOpen(true)}
