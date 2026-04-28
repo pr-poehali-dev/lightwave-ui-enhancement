@@ -17,16 +17,10 @@ export function Hero() {
 
       if (atTopOfPage && !animationComplete) {
         e.preventDefault()
-
         accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + e.deltaY))
-
         const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
         setAnimationProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setAnimationComplete(true)
-        }
-
+        if (newProgress >= 1) setAnimationComplete(true)
         if (contentRef.current) {
           const translateY = newProgress * 200
           const rotationX = newProgress * 45
@@ -35,16 +29,10 @@ export function Hero() {
         }
       } else if (atTopOfPage && animationComplete && e.deltaY < 0) {
         e.preventDefault()
-
         accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + e.deltaY))
-
         const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
         setAnimationProgress(newProgress)
-
-        if (newProgress < 1) {
-          setAnimationComplete(false)
-        }
-
+        if (newProgress < 1) setAnimationComplete(false)
         if (contentRef.current) {
           const translateY = newProgress * 200
           const rotationX = newProgress * 45
@@ -66,16 +54,10 @@ export function Hero() {
 
       if (atTopOfPage && !animationComplete) {
         e.preventDefault()
-
         accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + deltaY * 3))
-
         const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
         setAnimationProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setAnimationComplete(true)
-        }
-
+        if (newProgress >= 1) setAnimationComplete(true)
         if (contentRef.current) {
           const translateY = newProgress * 200
           const rotationX = newProgress * 45
@@ -84,16 +66,10 @@ export function Hero() {
         }
       } else if (atTopOfPage && animationComplete && deltaY < 0) {
         e.preventDefault()
-
         accumulatedScrollRef.current = Math.max(0, Math.min(700, accumulatedScrollRef.current + deltaY * 3))
-
         const newProgress = Math.max(0, Math.min(1, accumulatedScrollRef.current / 700))
         setAnimationProgress(newProgress)
-
-        if (newProgress < 1) {
-          setAnimationComplete(false)
-        }
-
+        if (newProgress < 1) setAnimationComplete(false)
         if (contentRef.current) {
           const translateY = newProgress * 200
           const rotationX = newProgress * 45
@@ -120,10 +96,11 @@ export function Hero() {
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hously-background.png"
-          alt="Минималистичный архитектурный интерьер"
+          src="https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/eaf96438-31b2-4121-932e-4151f0d50271.jpg"
+          alt="Уютный интерьер кофейни Вафля"
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <div
@@ -137,30 +114,26 @@ export function Hero() {
         }}
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-0">{"Архитектурная студия"}</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-center text-orange-200 mb-4">Семейная кофейня · Ярославль</p>
 
           <h1
             ref={titleRef}
-            className="text-7xl font-medium text-balance text-center text-white mb-0 tracking-tight leading-[0.9] lg:text-8xl"
+            className="text-7xl font-medium text-balance text-center text-white mb-6 tracking-tight leading-[0.9] lg:text-8xl"
           >
-            {"Создаем пространства"}
+            {"Лучшие вафли"}
             <br />
-            <span className="text-orange-200">{"для жизни"}</span>
+            <span className="text-orange-300">{"в городе"}</span>
           </h1>
-        </div>
-      </div>
 
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <img
-          src="/images/hously-foreground.png"
-          alt="Мраморная кухонная столешница"
-          className="w-full h-full object-cover object-center"
-        />
+          <p className="text-center text-white/80 text-lg max-w-lg mx-auto">
+            Бельгийские вафли с доставкой на дом и в уютном зале
+          </p>
+        </div>
       </div>
 
       {animationComplete && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-30">
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
+          <ArrowDown className="w-5 h-5 text-white/70" />
         </div>
       )}
     </section>

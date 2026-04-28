@@ -1,38 +1,37 @@
 import { useState, useEffect, useRef } from "react"
-import { ArrowUpRight } from "lucide-react"
 
-const projects = [
+const menuItems = [
   {
     id: 1,
-    title: "Резиденция Светлая",
-    category: "Жилой дом",
-    location: "Москва, Россия",
-    year: "2024",
-    image: "/images/hously-1.png",
+    title: "Классическая",
+    category: "Бельгийская вафля",
+    location: "Со сливочным маслом и мёдом",
+    year: "Хит",
+    image: "https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/44ead0a9-d3ed-495e-a465-24e48187386e.jpg",
   },
   {
     id: 2,
-    title: "Павильон Стекло",
-    category: "Коммерческий объект",
-    location: "Санкт-Петербург, Россия",
-    year: "2023",
-    image: "/images/hously-2.png",
+    title: "Ягодный рай",
+    category: "Бельгийская вафля",
+    location: "Клубника, черника, взбитые сливки",
+    year: "Новинка",
+    image: "https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/94caa424-10ad-4393-a77d-6131d2b57f88.jpg",
   },
   {
     id: 3,
-    title: "Дом у моря",
-    category: "Жилой дом",
-    location: "Сочи, Россия",
-    year: "2023",
-    image: "/images/hously-3.png",
+    title: "Шоколадный бриз",
+    category: "Бельгийская вафля",
+    location: "Тёмный шоколад, банан, орехи",
+    year: "Фаворит",
+    image: "https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/44ead0a9-d3ed-495e-a465-24e48187386e.jpg",
   },
   {
     id: 4,
-    title: "Северный приют",
-    category: "Гостиничный комплекс",
-    location: "Казань, Россия",
-    year: "2024",
-    image: "/images/hously-4.png",
+    title: "Карамельный",
+    category: "Бельгийская вафля",
+    location: "Солёная карамель, маскарпоне",
+    year: "Топ",
+    image: "https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/94caa424-10ad-4393-a77d-6131d2b57f88.jpg",
   },
 ]
 
@@ -48,7 +47,7 @@ export function Projects() {
           if (entry.isIntersecting) {
             const index = imageRefs.current.indexOf(entry.target as HTMLDivElement)
             if (index !== -1) {
-              setRevealedImages((prev) => new Set(prev).add(projects[index].id))
+              setRevealedImages((prev) => new Set(prev).add(menuItems[index].id))
             }
           }
         })
@@ -68,38 +67,37 @@ export function Projects() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Избранные работы</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Наши проекты</h2>
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наше меню</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Популярные вафли</h2>
           </div>
           <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+            href="#contact"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group bg-orange-400 text-white! px-5 py-2.5 hover:bg-orange-500"
           >
-            Смотреть все проекты
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            Заказать сейчас
           </a>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, index) => (
+          {menuItems.map((item, index) => (
             <article
-              key={project.id}
+              key={item.id}
               className="group cursor-pointer"
-              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               <div ref={(el) => (imageRefs.current[index] = el)} className="relative overflow-hidden aspect-[4/3] mb-6">
                 <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
+                  src={item.image}
+                  alt={item.title}
                   className={`w-full h-full object-cover transition-transform duration-700 ${
-                    hoveredId === project.id ? "scale-105" : "scale-100"
+                    hoveredId === item.id ? "scale-105" : "scale-100"
                   }`}
                 />
                 <div
                   className="absolute inset-0 bg-primary origin-top"
                   style={{
-                    transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
+                    transform: revealedImages.has(item.id) ? "scaleY(0)" : "scaleY(1)",
                     transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
                   }}
                 />
@@ -107,12 +105,12 @@ export function Projects() {
 
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
+                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">
-                    {project.category} · {project.location}
+                    {item.category} · {item.location}
                   </p>
                 </div>
-                <span className="text-muted-foreground/60 text-sm">{project.year}</span>
+                <span className="text-orange-500 text-sm font-medium bg-orange-50 px-2 py-1 rounded">{item.year}</span>
               </div>
             </article>
           ))}

@@ -1,30 +1,30 @@
 import { useEffect, useRef, useState } from "react"
-import { Home, Building, Armchair, Trees } from "lucide-react"
+import Icon from "@/components/ui/icon"
 import { HighlightedText } from "./HighlightedText"
 
-const expertiseAreas = [
+const services = [
   {
-    title: "Жилая архитектура",
-    description: "Создаем дома, которые сочетают красоту с комфортом, где каждое пространство служит и форме, и функции.",
-    icon: Home,
+    title: "Зал и самовывоз",
+    description: "Уютный зал на 30 мест с детским уголком. Приходите всей семьёй — мы рады гостям с 09:00 до 22:00.",
+    icon: "UtensilsCrossed",
   },
   {
-    title: "Коммерческие объекты",
+    title: "Доставка на дом",
     description:
-      "Проектируем рабочие пространства, которые вдохновляют на продуктивность и отражают ценности передовых организаций.",
-    icon: Building,
+      "Доставляем горячие вафли по всему Ярославлю за 45 минут. Принимаем заказы с 09:00 до 21:00 ежедневно.",
+    icon: "Truck",
   },
   {
-    title: "Дизайн интерьеров",
+    title: "Праздники и мероприятия",
     description:
-      "Создаем интерьеры, которые гармонируют с архитектурной оболочкой, формируя целостный пространственный опыт.",
-    icon: Armchair,
+      "Организуем вафельные столы на дни рождения, корпоративы и детские праздники. Выездное обслуживание.",
+    icon: "PartyPopper",
   },
   {
-    title: "Градостроительство",
+    title: "Подарочные сертификаты",
     description:
-      "Формируем сообщества через продуманную интеграцию общественных пространств, зданий и природных элементов.",
-    icon: Trees,
+      "Подарите радость близким — сертификаты на любую сумму. Отличный подарок для всей семьи.",
+    icon: "Gift",
   },
 ]
 
@@ -59,45 +59,40 @@ export function Expertise() {
         <div className="max-w-3xl mb-20">
           <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наши услуги</p>
           <h2 className="text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-            <HighlightedText>Экспертиза</HighlightedText>, отточенная
+            <HighlightedText>Вкусно</HighlightedText>, удобно,
             <br />
-            практикой
+            для всех
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Каждый проект опирается на десятилетия совокупного опыта, создавая архитектуру, которая одновременно инновационна и вневременна.
+            Кофейня «Вафля» — это не просто еда. Это тёплые воспоминания, вкус детства и радость для всей семьи.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
-          {expertiseAreas.map((area, index) => {
-            const Icon = area.icon
-            return (
+          {services.map((area, index) => (
+            <div
+              key={area.title}
+              ref={(el) => {
+                itemRefs.current[index] = el
+              }}
+              data-index={index}
+              className={`relative pl-8 border-l border-border transition-all duration-700 ${
+                visibleItems.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
               <div
-                key={area.title}
-                ref={(el) => {
-                  itemRefs.current[index] = el
-                }}
-                data-index={index}
-                className={`relative pl-8 border-l border-border transition-all duration-700 ${
-                  visibleItems.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                className={`transition-all duration-1000 ${
+                  visibleItems.includes(index) ? "animate-draw-stroke" : ""
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div
-                  className={`transition-all duration-1000 ${
-                    visibleItems.includes(index) ? "animate-draw-stroke" : ""
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 150}ms`,
-                  }}
-                >
-                  <Icon className="w-10 h-10 mb-4 text-foreground" strokeWidth={1.25} />
-                </div>
-                <h3 className="text-xl font-medium mb-4">{area.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{area.description}</p>
+                <Icon name={area.icon} size={40} className="mb-4 text-foreground" fallback="Star" />
               </div>
-            )
-          })}
+              <h3 className="text-xl font-medium mb-4">{area.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{area.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

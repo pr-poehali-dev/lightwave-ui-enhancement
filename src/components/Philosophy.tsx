@@ -3,23 +3,23 @@ import { HighlightedText } from "./HighlightedText"
 
 const philosophyItems = [
   {
-    title: "Минимализм со смыслом",
+    title: "Настоящее тесто",
     description:
-      "Каждый элемент имеет свое назначение и пространство для дыхания. Мы убираем лишнее, чтобы раскрыть то, что действительно важно.",
+      "Мы используем только классический бельгийский рецепт — без консервантов и улучшителей. Тесто готовится свежим каждое утро.",
   },
   {
-    title: "Архитектурный подход",
+    title: "Тёплая атмосфера",
     description:
-      "Планировки, вдохновленные структурой, ритмом и материальностью. Здания, которые говорят через пропорции и свет.",
+      "Уютный зал, где рады всей семье. Детский уголок, мягкие диваны и приветливый персонал — здесь хочется возвращаться.",
   },
   {
-    title: "Естественная динамика",
+    title: "Доставка за 45 минут",
     description:
-      "Движение поддерживает восприятие, но никогда не отвлекает. Анимация, которая ощущается естественно, как свет, скользящий по комнате.",
+      "Привезём горячие вафли прямо к вашей двери. Принимаем заказы с 09:00 до 21:00 по всему Ярославлю.",
   },
   {
-    title: "Вневременная эстетика",
-    description: "Элегантный, спокойный и долговечный визуальный язык. Дизайн, который превосходит тренды и стареет с достоинством.",
+    title: "Любовь к деталям",
+    description: "Каждая вафля украшается вручную. Свежие ягоды, домашние соусы, взбитые сливки — мы не экономим на радости.",
   },
 ]
 
@@ -51,28 +51,26 @@ export function Philosophy() {
     <section id="about" className="py-32 md:py-29">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left column - Title and image */}
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наша философия</p>
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">О нас</p>
             <h2 className="text-6xl md:text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-              Дизайн с
+              Готовим с
               <br />
-              <HighlightedText>намерением</HighlightedText>
+              <HighlightedText>душой</HighlightedText>
             </h2>
 
             <div className="relative hidden lg:block">
               <img
-                src="/images/exterior.png"
-                alt="Архитектурный эскиз рабочего пространства"
-                className="opacity-90 relative z-10 w-auto"
+                src="https://cdn.poehali.dev/projects/3077a0aa-95f3-4e35-927f-a46fb3582056/files/44ead0a9-d3ed-495e-a465-24e48187386e.jpg"
+                alt="Свежие бельгийские вафли с ягодами"
+                className="opacity-90 relative z-10 w-full rounded-lg object-cover aspect-[4/3]"
               />
             </div>
           </div>
 
-          {/* Right column - Description and Philosophy items */}
           <div className="space-y-6 lg:pt-48">
             <p className="text-muted-foreground text-lg leading-relaxed max-w-md mb-12">
-              Архитектура - это больше, чем конструкция. Это то, как мы воспринимаем мир. Мы создаем пространства, которые питают человеческий дух.
+              Кофейня «Вафля» — это семейное место в Ярославле, где каждый день пекутся настоящие бельгийские вафли по традиционному рецепту. Мы открыты для всех — от малышей до бабушек.
             </p>
 
             {philosophyItems.map((item, index) => (
