@@ -65,7 +65,8 @@ export function Footer() {
                   </a>
                 </li>
                 <li className="text-muted-foreground">Ярославль</li>
-                <li className="text-muted-foreground">Пн–Вс: 09:00 – 22:00</li>
+                <li className="text-muted-foreground">Пн–Пт: 08:00 – 20:30</li>
+                <li className="text-muted-foreground">Сб–Вс: 09:00 – 20:30</li>
               </ul>
             </div>
           </div>
